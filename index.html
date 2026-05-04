@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>git.band — Music From the Command Line</title>
+  <meta name="description" content="git.band — an indie rock band from San Francisco. Catch us live, stream our records, and push some noise." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">git<span>.band</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero">
+    <div class="hero-label">Est. 2022 · San Francisco, CA</div>
+    <h1 class="hero-title"><span class="accent">git</span>.band</h1>
+    <p class="hero-sub">Indie rock brewed in the terminal. Loud riffs, honest lyrics, zero merge conflicts.</p>
+    <div class="hero-cta">
+      <a href="#music" class="btn btn-primary">Listen Now</a>
+      <a href="#shows" class="btn btn-outline">Upcoming Shows</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">// about us</p>
+          <h2 class="section-title">Four humans.<br>One distortion pedal.</h2>
+          <p class="section-desc">
+            git.band was born in a San Francisco garage in 2022, when four software engineers decided that
+            pull requests weren't enough to express their feelings. We play indie rock with post-punk edges,
+            and we're not afraid to push to main.
+          </p>
+          <div class="member-list">
+            <div class="member">
+              <div class="member-avatar">🎸</div>
+              <div>
+                <div class="member-name">Jorge Vázquez</div>
+                <div class="member-role">Vocals &amp; Guitar</div>
+              </div>
+            </div>
+            <div class="member">
+              <div class="member-avatar">🎸</div>
+              <div>
+                <div class="member-name">Mara Silva</div>
+                <div class="member-role">Lead Guitar &amp; Synths</div>
+              </div>
+            </div>
+            <div class="member">
+              <div class="member-avatar">🎵</div>
+              <div>
+                <div class="member-name">Dev Patel</div>
+                <div class="member-role">Bass</div>
+              </div>
+            </div>
+            <div class="member">
+              <div class="member-avatar">🥁</div>
+              <div>
+                <div class="member-name">Kai Nguyen</div>
+                <div class="member-role">Drums &amp; Percussion</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-visual">🎸</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MUSIC ===== -->
+  <section id="music">
+    <div class="container">
+      <p class="section-label">// discography</p>
+      <h2 class="section-title">Our Records</h2>
+      <p class="section-desc">Three albums. Many late nights. Zero regrets.</p>
+      <div class="albums-grid">
+
+        <!-- Album 1 -->
+        <div class="album-card">
+          <div class="album-cover album-cover-1">
+            🔥
+            <span class="album-year">2024</span>
+          </div>
+          <div class="album-info">
+            <div class="album-title">Force Push</div>
+            <div class="album-meta">Full-length · 11 tracks · 42 min</div>
+            <ol class="track-list">
+              <li><span class="track-num">01</span> Detached HEAD</li>
+              <li><span class="track-num">02</span> Force Push (Don't Look Back)</li>
+              <li><span class="track-num">03</span> Rebase My Heart</li>
+              <li><span class="track-num">04</span> Merge Conflict Blues</li>
+              <li><span class="track-num">05</span> Squash &amp; Commit</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Album 2 -->
+        <div class="album-card">
+          <div class="album-cover album-cover-2">
+            🌊
+            <span class="album-year">2023</span>
+          </div>
+          <div class="album-info">
+            <div class="album-title">Async / Await</div>
+            <div class="album-meta">Full-length · 9 tracks · 36 min</div>
+            <ol class="track-list">
+              <li><span class="track-num">01</span> Promise.resolve()</li>
+              <li><span class="track-num">02</span> Callback Hell</li>
+              <li><span class="track-num">03</span> Race Condition</li>
+              <li><span class="track-num">04</span> Event Loop</li>
+              <li><span class="track-num">05</span> Deadlock Serenade</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Album 3 -->
+        <div class="album-card">
+          <div class="album-cover album-cover-3">
+            🌿
+            <span class="album-year">2022</span>
+          </div>
+          <div class="album-info">
+            <div class="album-title">Initial Commit</div>
+            <div class="album-meta">Debut EP · 6 tracks · 22 min</div>
+            <ol class="track-list">
+              <li><span class="track-num">01</span> Hello, World</li>
+              <li><span class="track-num">02</span> git init</li>
+              <li><span class="track-num">03</span> First Draft</li>
+              <li><span class="track-num">04</span> README</li>
+              <li><span class="track-num">05</span> .gitignore (the feelings)</li>
+            </ol>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHOWS ===== -->
+  <section id="shows">
+    <div class="container">
+      <p class="section-label">// tour dates</p>
+      <h2 class="section-title">Upcoming Shows</h2>
+      <p class="section-desc">Come break things with us in person.</p>
+      <div class="shows-list">
+
+        <div class="show-item">
+          <div class="show-date">
+            <div class="day">14</div>
+            <div class="month">Jun</div>
+            <div class="year">2026</div>
+          </div>
+          <div class="show-info">
+            <div class="show-venue">The Independent</div>
+            <div class="show-location">San Francisco, CA</div>
+            <div class="show-tags"><span class="tag tag-new">Tickets Available</span></div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Get Tickets</a>
+        </div>
+
+        <div class="show-item">
+          <div class="show-date">
+            <div class="day">28</div>
+            <div class="month">Jun</div>
+            <div class="year">2026</div>
+          </div>
+          <div class="show-info">
+            <div class="show-venue">El Rey Theatre</div>
+            <div class="show-location">Los Angeles, CA</div>
+            <div class="show-tags"><span class="tag tag-new">Tickets Available</span></div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Get Tickets</a>
+        </div>
+
+        <div class="show-item">
+          <div class="show-date">
+            <div class="day">12</div>
+            <div class="month">Jul</div>
+            <div class="year">2026</div>
+          </div>
+          <div class="show-info">
+            <div class="show-venue">Neumos</div>
+            <div class="show-location">Seattle, WA</div>
+            <div class="show-tags"><span class="tag tag-sold-out">Sold Out</span></div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Waitlist</a>
+        </div>
+
+        <div class="show-item">
+          <div class="show-date">
+            <div class="day">19</div>
+            <div class="month">Jul</div>
+            <div class="year">2026</div>
+          </div>
+          <div class="show-info">
+            <div class="show-venue">Primavera Sound</div>
+            <div class="show-location">Barcelona, Spain</div>
+            <div class="show-tags"><span class="tag tag-festival">Festival</span></div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Info</a>
+        </div>
+
+        <div class="show-item">
+          <div class="show-date">
+            <div class="day">02</div>
+            <div class="month">Aug</div>
+            <div class="year">2026</div>
+          </div>
+          <div class="show-info">
+            <div class="show-venue">Terminal 5</div>
+            <div class="show-location">New York, NY</div>
+            <div class="show-tags"><span class="tag tag-new">Tickets Available</span></div>
+          </div>
+          <a href="#contact" class="btn btn-outline">Get Tickets</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <p class="section-label">// get in touch</p>
+          <h2 class="section-title">Say Hello</h2>
+          <p class="section-desc">Bookings, press, fan mail, or just want to nerd out about music and code? We're here.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <span class="social-icon">🎵</span>
+              <div>
+                <div class="social-name">Spotify</div>
+                <div class="social-handle">@gitband</div>
+              </div>
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">📺</span>
+              <div>
+                <div class="social-name">YouTube</div>
+                <div class="social-handle">@gitband</div>
+              </div>
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">🐦</span>
+              <div>
+                <div class="social-name">Twitter / X</div>
+                <div class="social-handle">@git_band</div>
+              </div>
+            </a>
+            <a href="#" class="social-link">
+              <span class="social-icon">📷</span>
+              <div>
+                <div class="social-name">Instagram</div>
+                <div class="social-handle">@git.band</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject">
+              <option value="general">General Inquiry</option>
+              <option value="booking">Booking / Shows</option>
+              <option value="press">Press &amp; Media</option>
+              <option value="merch">Merch</option>
+              <option value="collab">Collaboration</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="What's on your mind?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-logo">git<span style="color:var(--text)">.band</span></div>
+    <p>© 2026 git.band · Made with ❤️ and too much coffee · San Francisco, CA</p>
+  </footer>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast">✅ Message sent! We'll get back to you soon.</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
