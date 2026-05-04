@@ -311,8 +311,8 @@
     <p>© 2026 git.band · Made with ❤️ and too much coffee · San Francisco, CA</p>
   </footer>
 
-  <!-- Toast notification -->
-  <div class="toast" id="toast">✅ Message sent! We'll get back to you soon.</div>
+  <!-- Toast notification (aria-live so screen readers announce it) -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">✅ Message sent! We'll get back to you soon.</div>
 
   <script src="script.js"></script>
 </body>
