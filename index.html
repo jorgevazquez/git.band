@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIT.BAND</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-nav" id="site-nav">
+  <a href="#hero" class="nav-logo">GIT.BAND</a>
+  <nav class="nav-links">
+    <a href="#music" class="nav-link">Music</a>
+    <a href="#shows" class="nav-link">Shows</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="hero" class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide is-active" data-slide="0" style="background-image: url('images/01-hydraulics.jpg')"></div>
+      <div class="hero-slide" data-slide="1" style="background-image: url('images/02-circuit-forge.jpg')"></div>
+      <div class="hero-slide" data-slide="2" style="background-image: url('images/03-magma-veins.jpg')"></div>
+      <div class="hero-slide" data-slide="3" style="background-image: url('images/04-brutalist-night.jpg')"></div>
+      <div class="hero-slide" data-slide="4" style="background-image: url('images/05-steel-mill.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">// INDUSTRIAL METAL</span>
+      <h1 class="hero-title">GIT<span class="accent">.</span>BAND</h1>
+      <p class="hero-tagline">Forged in heat. Tempered in noise.</p>
+      <a href="#music" class="btn-primary">Hear the Machine</a>
+    </div>
+  </section>
+
+  <section id="music" class="section music">
+    <div class="section-inner">
+      <h2 class="section-heading">Music</h2>
+      <div class="release-grid">
+        <article class="release-card">
+          <div class="release-art" aria-label="Album art placeholder"></div>
+          <div class="release-meta">
+            <h3 class="release-title">Hydraulic Requiem</h3>
+            <span class="release-year">2024</span>
+          </div>
+          <div class="release-links">
+            <a href="#" class="release-link">Spotify</a>
+            <a href="#" class="release-link">Bandcamp</a>
+            <a href="#" class="release-link">Apple Music</a>
+          </div>
+        </article>
+
+        <article class="release-card">
+          <div class="release-art" aria-label="Album art placeholder"></div>
+          <div class="release-meta">
+            <h3 class="release-title">Circuit Forge</h3>
+            <span class="release-year">2022</span>
+          </div>
+          <div class="release-links">
+            <a href="#" class="release-link">Spotify</a>
+            <a href="#" class="release-link">Bandcamp</a>
+            <a href="#" class="release-link">Apple Music</a>
+          </div>
+        </article>
+
+        <article class="release-card">
+          <div class="release-art" aria-label="Album art placeholder"></div>
+          <div class="release-meta">
+            <h3 class="release-title">Magma Veins</h3>
+            <span class="release-year">2020</span>
+          </div>
+          <div class="release-links">
+            <a href="#" class="release-link">Spotify</a>
+            <a href="#" class="release-link">Bandcamp</a>
+            <a href="#" class="release-link">Apple Music</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="shows" class="section shows">
+    <div class="section-inner">
+      <h2 class="section-heading">Shows</h2>
+      <div class="shows-table-wrap">
+        <table class="shows-table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Venue</th>
+              <th scope="col">City</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="show-date"><time datetime="2026-06-14">Jun 14, 2026</time></td>
+              <td class="show-venue">The Foundry</td>
+              <td class="show-city">Philadelphia, PA</td>
+              <td><a href="#" class="ticket-link">Tickets →</a></td>
+            </tr>
+            <tr>
+              <td class="show-date"><time datetime="2026-06-21">Jun 21, 2026</time></td>
+              <td class="show-venue">Blast Furnace Club</td>
+              <td class="show-city">Pittsburgh, PA</td>
+              <td><a href="#" class="ticket-link">Tickets →</a></td>
+            </tr>
+            <tr>
+              <td class="show-date"><time datetime="2026-07-04">Jul 04, 2026</time></td>
+              <td class="show-venue">The Slag Yard</td>
+              <td class="show-city">Detroit, MI</td>
+              <td><a href="#" class="ticket-link">Tickets →</a></td>
+            </tr>
+            <tr>
+              <td class="show-date"><time datetime="2026-07-19">Jul 19, 2026</time></td>
+              <td class="show-venue">Iron District</td>
+              <td class="show-city">Chicago, IL</td>
+              <td><a href="#" class="ticket-link">Tickets →</a></td>
+            </tr>
+            <tr>
+              <td class="show-date"><time datetime="2026-08-02">Aug 02, 2026</time></td>
+              <td class="show-venue">Void Amphitheatre</td>
+              <td class="show-city">Brooklyn, NY</td>
+              <td><a href="#" class="ticket-link">Tickets →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="section-inner">
+      <h2 class="section-heading">About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-bio">
+            git.band is a four-piece industrial metal project forged in the machine rooms of the American rust belt. Drawing from the sounds of hydraulic press lines, arc welding, and blast furnace cycles, the band translates the raw violence of industrial labor into structured noise. No samples. No triggers. Pure signal chain brutality.
+          </p>
+          <ul class="member-list">
+            <li class="member-item">
+              <span class="member-name">Karev</span>
+              <span class="member-role">// Vocals & Electronics</span>
+            </li>
+            <li class="member-item">
+              <span class="member-name">Solt</span>
+              <span class="member-role">// Guitar & Noise</span>
+            </li>
+            <li class="member-item">
+              <span class="member-name">Wen</span>
+              <span class="member-role">// Bass & Synthesis</span>
+            </li>
+            <li class="member-item">
+              <span class="member-name">Drave</span>
+              <span class="member-role">// Drums & Percussion</span>
+            </li>
+          </ul>
+        </div>
+        <div class="about-image-wrap">
+          <div class="about-image-placeholder" aria-label="Band photo placeholder"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact" class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-socials">
+      <a href="#" class="social-link" aria-label="Spotify">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.5c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7 2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7zm4-7c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3z"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.335.012 7.053.07 2.695.272.273 2.69.07 7.052.012 8.333 0 8.756 0 12s.012 3.667.07 4.948c.202 4.358 2.623 6.78 6.985 6.982 1.282.058 1.703.07 4.949.07 3.247 0 3.668-.012 4.949-.07 4.355-.202 6.78-2.628 6.981-6.982.058-1.281.07-1.702.07-4.948s-.012-3.667-.07-4.949C23.728 2.694 21.303.275 16.948.073 15.668.012 15.247 0 12 0z"/><circle fill="currentColor" cx="12" cy="12" r="3.6"/><circle fill="currentColor" cx="18.406" cy="5.594" r="0.6"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="#" class="social-link" aria-label="Bandcamp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.665 6.602H0v10.796h9.665V6.602zm4.67 0v10.796h9.665V6.602h-9.665z"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">
+      &copy; <span id="footer-year">2026</span> git.band. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
