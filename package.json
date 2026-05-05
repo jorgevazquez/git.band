@@ -1,0 +1,36 @@
+{
+  "name": "puter-dalle-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MCP server that generates images via Puter.com (DALL·E etc.) and returns them inline to Claude Code.",
+  "type": "module",
+  "bin": {
+    "puter-dalle-mcp": "dist/src/server.js"
+  },
+  "scripts": {
+    "serve": "npx serve .",
+    "build": "tsc",
+    "start": "node dist/src/server.js",
+    "dev": "tsx src/server.ts",
+    "get-token": "tsx scripts/get-token.ts",
+    "deploy": "tsx scripts/deploy.ts",
+    "deploy:dry": "DRY_RUN=true tsx scripts/deploy.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudfront": "^3.600.0",
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@heyputer/puter.js": "^1.0.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "mime": "^4.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

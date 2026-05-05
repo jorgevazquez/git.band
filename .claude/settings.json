@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -I https://api.us1.bfl.ai/v1/)",
+      "Bash(npx http-server *)",
+      "Bash(curl -I http://localhost:8000/index.html)",
+      "Bash(curl -I http://localhost:8000/style.css)",
+      "Bash(curl -I http://localhost:8000/main.js)",
+      "Bash(curl -I http://localhost:8000/images/01-hydraulics.jpg)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(curl -s http://127.0.0.1:8080)",
+      "Bash(curl -s http://127.0.0.1:8080/main.js)",
+      "Bash(curl -s http://127.0.0.1:8080/index.html)",
+      "Bash(curl -s http://127.0.0.1:8080/style.css)",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"require\\('dotenv'\\).config\\({ path: '.env.local' }\\); console.log\\('PUTER_AUTH_TOKEN:', process.env.PUTER_AUTH_TOKEN ? 'SET \\(' + process.env.PUTER_AUTH_TOKEN.substring\\(0, 20\\) + '...\\)' : 'NOT SET'\\)\")"
+    ]
+  }
+}

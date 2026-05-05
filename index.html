@@ -1,22 +1,1213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager + Consent Mode -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'wait_for_update': 500
+    });
+  </script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NK3JPTKD');</script>
+  <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GIT.BAND</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      /* Palette */
+      --color-void:          #0A0608;
+      --color-forge-black:   #150D10;
+      --color-soot:          #2A1A1E;
+      --color-bloodstone:    #3D0F14;
+      --color-crimson-steel: #7A1A24;
+      --color-furnace-red:   #C0272D;
+      --color-ember:         #E84A2F;
+      --color-ash-white:     #EDE5E1;
+      --color-slag:          #8A7A78;
+
+      /* Glow colors (OKLCH) */
+      --glow-ember: oklch(55% 0.22 30);
+      --glow-ember-dim: oklch(40% 0.18 30);
+
+      /* Typography */
+      --font-display:  'Bebas Neue', sans-serif;
+      --font-heading:  'Big Shoulders Display', sans-serif;
+      --font-body:     'Barlow', sans-serif;
+
+      /* Spacing scale */
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  8rem;
+
+      /* Nav height */
+      --nav-height: 4rem;
+
+      /* Transition easing */
+      --ease-slide:  cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      cursor: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--color-void);
+      color: var(--color-ash-white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      filter: url(#grain);
+      background: #fff;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Typography scale */
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 16vw, 14rem);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      text-shadow:
+        0 0 8px var(--glow-ember),
+        0 0 20px var(--glow-ember-dim),
+        0 0 45px var(--glow-ember-dim),
+        0 0 80px oklch(25% 0.12 30);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-ember);
+    }
+
+    .hero-tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: var(--color-slag);
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: -0.01em;
+      color: var(--color-ash-white);
+      position: relative;
+    }
+
+    .section-heading::before,
+    .section-heading::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      font-size: inherit;
+      letter-spacing: -0.01em;
+      padding-left: inherit;
+    }
+
+    .section-heading::before {
+      color: var(--color-ember);
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      animation: glitch-top 3.5s infinite linear;
+    }
+
+    .section-heading::after {
+      color: #fff;
+      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      animation: glitch-bot 4.2s infinite linear;
+    }
+
+    .release-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .release-year {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      color: var(--color-slag);
+    }
+
+    .member-name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    .member-role {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      color: var(--color-ember);
+    }
+
+    .about-bio {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--color-slag);
+      max-width: 60ch;
+    }
+
+    #about-bio p {
+      padding-bottom: 50px;
+    }
+
+    /* Nav */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-md);
+      background: rgba(10, 6, 8, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(138, 122, 120, 0.15);
+      transition: background 0.3s var(--ease-slide);
+    }
+
+    .site-nav.is-scrolled {
+      background: rgba(10, 6, 8, 0.92);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+      color: var(--color-ash-white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .nav-link {
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-slag);
+      transition: color 0.2s, font-variation-settings 0.2s;
+      font-variation-settings: 'wght' 400;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--color-ember);
+      font-variation-settings: 'wght' 800;
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-ember);
+      transition: transform 0.2s;
+    }
+
+    .nav-burger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-burger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-burger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-margin-top: var(--nav-height);
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+      will-change: opacity, transform;
+    }
+
+    .hero-slide.is-active {
+      opacity: 1;
+      animation: ken-burns 7s ease-out forwards;
+    }
+
+    @keyframes ken-burns {
+      from { transform: scale(1.08); }
+      to   { transform: scale(1.0);  }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 6, 8, 0.35) 0%,
+        rgba(10, 6, 8, 0.55) 60%,
+        rgba(10, 6, 8, 0.9)  100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 var(--space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .accent {
+      color: var(--color-ember);
+    }
+
+    .hero-title {
+      position: relative;
+    }
+
+    .hero-title::before,
+    .hero-title::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      letter-spacing: -0.01em;
+      line-height: 0.9;
+      font-size: inherit;
+    }
+
+    .hero-title::before {
+      color: var(--color-ember);
+      animation: glitch-top 3.5s infinite linear;
+    }
+
+    .hero-title::after {
+      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      color: #fff;
+      animation: glitch-bot 4.2s infinite linear;
+    }
+
+    @keyframes glitch-top {
+      0%, 90%, 100% { transform: translate(0); }
+      91% { transform: translate(-4px, -2px); }
+      93% { transform: translate(4px, 2px); }
+      95% { transform: translate(-3px, 1px); }
+    }
+
+    @keyframes glitch-bot {
+      0%, 88%, 100% { transform: translate(0); }
+      89% { transform: translate(5px, 1px); }
+      91% { transform: translate(-5px, -1px); }
+      93% { transform: translate(3px, 2px); }
+    }
+
+    .reveal-line {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: line-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes line-reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button */
+    .btn-primary {
+      display: inline-block;
+      margin-top: var(--space-sm);
+      padding: 0.875rem 2.5rem;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-ash-white);
+      background: transparent;
+      border: 1px solid var(--color-ember);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      animation: ember-pulse 2.5s ease-in-out infinite;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-ember);
+      color: var(--color-void);
+    }
+
+    @keyframes ember-pulse {
+      0%, 100% { box-shadow: 0 0 8px var(--glow-ember), 0 0 20px var(--glow-ember-dim); }
+      50% { box-shadow: 0 0 16px var(--glow-ember), 0 0 40px var(--glow-ember-dim), 0 0 60px oklch(20% 0.10 30); }
+    }
+
+    /* Cursor */
+    .cursor {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid var(--color-ember);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      top: -100px;
+      left: -100px;
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+
+    .cursor.is-hovering {
+      width: 32px;
+      height: 32px;
+      background: oklch(55% 0.22 30 / 0.15);
+    }
+
+    /* Scroll-driven animations */
+    @supports (animation-timeline: view()) {
+      .section-reveal {
+        animation: section-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 25%;
+      }
+      @keyframes section-in {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
+    /* Sections */
+    .section {
+      padding: var(--space-xl) 0;
+      scroll-margin-top: var(--nav-height);
+    }
+
+    .music {
+      background-color: var(--color-void);
+    }
+
+    .shows {
+      background-color: var(--color-forge-black);
+    }
+
+    .about {
+      background-color: var(--color-soot);
+    }
+
+    .fools {
+      background-color: var(--color-forge-black);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    .section-heading {
+      margin-bottom: var(--space-lg);
+      border-left: 4px solid var(--color-ember);
+      padding-left: var(--space-sm);
+    }
+
+    /* Music / Releases */
+    .releases-section {
+      display: flex;
+      justify-content: center;
+    }
+
+    .release-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* Flip card styles */
+    .release-card {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .release-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .release-card.is-flipped .release-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .release-card-front,
+    .release-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-forge-black);
+      border: 1px solid rgba(138, 122, 120, 0.12);
+    }
+
+    .release-card-back {
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      padding: var(--space-sm);
+      gap: var(--space-xs);
+    }
+
+    .release-card-front:hover,
+    .release-card-back:hover {
+      border-color: var(--color-ember);
+    }
+
+    .release-art {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-soot);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .release-art::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(61, 15, 20, 0.4) 0px,
+          rgba(61, 15, 20, 0.4) 1px,
+          transparent 1px,
+          transparent 8px
+        );
+    }
+
+    .play-overlay {
+      position: absolute;
+      bottom: var(--space-sm);
+      right: var(--space-sm);
+      width: 48px;
+      height: 48px;
+      background: var(--color-ember);
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      box-shadow: 0 0 12px var(--glow-ember);
+    }
+
+    .play-overlay:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--glow-ember);
+    }
+
+    .play-overlay svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--color-void);
+      margin-left: 2px;
+    }
+
+    .release-header {
+      padding-bottom: var(--space-xs);
+      border-bottom: 1px solid rgba(138, 122, 120, 0.2);
+      margin-bottom: var(--space-xs);
+    }
+
+    .release-title {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .release-year {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--color-slag);
+    }
+
+    .tracks-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      flex: 1;
+    }
+
+    .track-item {
+      display: flex;
+      gap: var(--space-xs);
+      padding: var(--space-xs);
+      background: rgba(232, 74, 47, 0.05);
+      border: 1px solid rgba(232, 74, 47, 0.1);
+      transition: all 0.2s;
+    }
+
+    .track-item:hover {
+      background: rgba(232, 74, 47, 0.1);
+      border-color: var(--color-ember);
+    }
+
+    .track-cover {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(138, 122, 120, 0.2);
+    }
+
+    .track-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .track-title {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-ash-white);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .track-duration {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      color: var(--color-slag);
+    }
+
+    .track-controls {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .track-btn {
+      width: 24px;
+      height: 24px;
+      background: var(--color-ember);
+      border: none;
+      color: var(--color-void);
+      cursor: pointer;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .track-btn:hover {
+      background: var(--color-ash-white);
+      color: var(--color-ember);
+    }
+
+    .track-btn svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    /* Shows */
+    .shows-table-wrap {
+      overflow-x: auto;
+      border: 1px solid rgba(138, 122, 120, 0.15);
+    }
+
+    .shows-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    .shows-table thead {
+      background: var(--color-soot);
+    }
+
+    .shows-table th {
+      padding: var(--space-sm) var(--space-md);
+      text-align: left;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-slag);
+      font-weight: 500;
+    }
+
+    .shows-table tbody tr {
+      border-top: 1px solid rgba(138, 122, 120, 0.1);
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .shows-table tbody tr::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        oklch(55% 0.22 30 / 0.04) 2px,
+        oklch(55% 0.22 30 / 0.04) 4px
+      );
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .shows-table tbody tr:hover::after {
+      opacity: 1;
+    }
+
+    .shows-table tbody tr:hover {
+      background: oklch(55% 0.22 30 / 0.06);
+    }
+
+    .shows-table td {
+      padding: var(--space-sm) var(--space-md);
+    }
+
+    .show-date {
+      color: var(--color-ember);
+      font-size: 0.85rem;
+    }
+
+    .show-venue {
+      font-weight: 500;
+      color: var(--color-ash-white);
+    }
+
+    .show-city {
+      color: var(--color-slag);
+    }
+
+    .ticket-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-ember);
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .ticket-link:hover {
+      color: var(--color-ash-white);
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    .fools-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+
+    .member-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+      background: var(--color-soot);
+      border: 1px solid rgba(138, 122, 120, 0.12);
+    }
+
+    .member-image {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      background-color: var(--color-bloodstone);
+      background-size: cover;
+      background-position: center;
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(10, 6, 8, 0.5) 0px,
+        rgba(10, 6, 8, 0.5) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+    }
+
+    .member-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .member-link {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--color-slag);
+      transition: color 0.2s;
+    }
+
+    .member-link:hover {
+      color: var(--color-ember);
+    }
+
+    .about-image-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + var(--space-md));
+    }
+
+    .about-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background-color: var(--color-bloodstone);
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          rgba(10, 6, 8, 0.5) 0px,
+          rgba(10, 6, 8, 0.5) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--color-void);
+      border-top: 1px solid rgba(138, 122, 120, 0.15);
+      padding: var(--space-lg) 0;
+      scroll-margin-top: var(--nav-height);
+    }
+
+    /* Cookie Modal */
+    .cookie-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 50000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .cookie-modal.is-open {
+      display: flex;
+      pointer-events: auto;
+    }
+
+    .cookie-modal__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 6, 8, 0.85);
+      backdrop-filter: blur(4px);
+    }
+
+    .cookie-modal__content {
+      position: relative;
+      z-index: 1;
+      background: var(--color-forge-black);
+      border: 1px solid var(--color-ember);
+      border-radius: 0;
+      padding: var(--space-lg);
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 0 30px rgba(232, 74, 47, 0.2), 0 0 60px rgba(232, 74, 47, 0.1);
+    }
+
+    .cookie-modal__title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin-bottom: var(--space-md);
+      color: var(--color-ash-white);
+      text-shadow: 0 0 8px var(--glow-ember);
+    }
+
+    .cookie-modal__text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--color-slag);
+      margin-bottom: var(--space-lg);
+    }
+
+    .cookie-modal__fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 var(--space-lg);
+    }
+
+    .cookie-modal__legend {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-ember);
+      margin-bottom: var(--space-md);
+      font-weight: 600;
+    }
+
+    .cookie-modal__option {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm);
+      margin-bottom: var(--space-xs);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+
+    .cookie-modal__option:hover {
+      background: rgba(232, 74, 47, 0.05);
+    }
+
+    .cookie-modal__option input[type="checkbox"] {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--color-ember);
+    }
+
+    .cookie-modal__option input[type="checkbox"]:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .cookie-modal__label-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cookie-modal__label-text strong {
+      font-weight: 600;
+      color: var(--color-ash-white);
+    }
+
+    .cookie-modal__description {
+      font-size: 0.8rem;
+      color: var(--color-slag);
+    }
+
+    .cookie-modal__actions {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: flex-end;
+    }
+
+    .cookie-modal__btn {
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(138, 122, 120, 0.3);
+      background: transparent;
+      color: var(--color-slag);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .cookie-modal__btn:hover {
+      border-color: var(--color-ember);
+      color: var(--color-ember);
+    }
+
+    .cookie-modal__btn--primary {
+      border-color: var(--color-ember);
+      color: var(--color-ash-white);
+    }
+
+    .cookie-modal__btn--primary:hover {
+      background: var(--color-ember);
+      color: var(--color-void);
+    }
+
+    .cookie-modal__btn--accept {
+      border-color: var(--color-ember);
+      background: var(--color-ember);
+      color: var(--color-void);
+    }
+
+    .cookie-modal__btn--accept:hover {
+      box-shadow: 0 0 12px var(--glow-ember);
+    }
+
+    .cookie-modal__close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      color: var(--color-slag);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s;
+    }
+
+    .cookie-modal__close:hover {
+      color: var(--color-ember);
+    }
+
+    .cookie-link {
+      background: none;
+      border: none;
+      color: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: inherit;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .cookie-link:hover {
+      color: var(--color-ember);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: var(--space-md);
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      color: var(--color-slag);
+      transition: color 0.2s;
+    }
+
+    .social-link svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: currentColor;
+    }
+
+    .social-link:hover {
+      color: var(--color-ember);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--color-slag);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: var(--space-sm);
+      }
+
+      .release-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+      }
+
+      .releases-section {
+        width: 100%;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image-wrap {
+        position: static;
+        order: -1;
+      }
+
+      .section {
+        padding: var(--space-lg) 0;
+      }
+
+      .release-card-back {
+        font-size: 0.9rem;
+      }
+
+      .track-item {
+        padding: var(--space-xs) 0.5rem;
+      }
+
+      .play-overlay {
+        width: 40px;
+        height: 40px;
+      }
+
+      .play-overlay svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .fools-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-burger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 1rem;
+        background: var(--color-forge-black);
+        padding: 1rem;
+        gap: 1rem;
+        border: 1px solid var(--color-ember);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .shows-table th:nth-child(2),
+      .shows-table td:nth-child(2) {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NK3JPTKD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <header class="site-nav" id="site-nav">
-  <a href="#hero" class="nav-logo">GIT.BAND</a>
+  <a href="#hero" class="nav-logo" id="nav-logo"></a>
+  <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <nav class="nav-links">
     <a href="#music" class="nav-link">Music</a>
-    <a href="#shows" class="nav-link">Shows</a>
+    <a href="#fools" class="nav-link">The Fools</a>
     <a href="#about" class="nav-link">About</a>
+    <a href="#shows" class="nav-link">Shows</a>
     <a href="#contact" class="nav-link">Contact</a>
   </nav>
 </header>
@@ -33,55 +1224,39 @@
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-eyebrow">// INDUSTRIAL METAL</span>
-      <h1 class="hero-title">GIT<span class="accent">.</span>BAND</h1>
-      <p class="hero-tagline">Forged in heat. Tempered in noise.</p>
-      <a href="#music" class="btn-primary">Hear the Machine</a>
+      <span class="hero-eyebrow reveal-line" style="--delay: 0s" id="hero-eyebrow"></span>
+      <h1 class="hero-title reveal-line" style="--delay: 0.2s" id="hero-title"></h1>
+      <p class="hero-tagline reveal-line" style="--delay: 0.4s" id="hero-tagline"></p>
+      <a href="#music" class="btn-primary reveal-line" style="--delay: 0.6s" id="hero-cta"></a>
     </div>
   </section>
 
   <section id="music" class="section music">
     <div class="section-inner">
       <h2 class="section-heading">Music</h2>
-      <div class="release-grid">
-        <article class="release-card">
-          <div class="release-art" aria-label="Album art placeholder"></div>
-          <div class="release-meta">
-            <h3 class="release-title">Hydraulic Requiem</h3>
-            <span class="release-year">2024</span>
-          </div>
-          <div class="release-links">
-            <a href="#" class="release-link">Spotify</a>
-            <a href="#" class="release-link">Bandcamp</a>
-            <a href="#" class="release-link">Apple Music</a>
-          </div>
-        </article>
+      <div class="releases-section">
+        <div class="release-grid" id="release-grid"></div>
+      </div>
+    </div>
+  </section>
 
-        <article class="release-card">
-          <div class="release-art" aria-label="Album art placeholder"></div>
-          <div class="release-meta">
-            <h3 class="release-title">Circuit Forge</h3>
-            <span class="release-year">2022</span>
-          </div>
-          <div class="release-links">
-            <a href="#" class="release-link">Spotify</a>
-            <a href="#" class="release-link">Bandcamp</a>
-            <a href="#" class="release-link">Apple Music</a>
-          </div>
-        </article>
+  <section id="fools" class="section fools">
+    <div class="section-inner">
+      <h2 class="section-heading">The Fools</h2>
+      <div class="fools-grid" id="member-list"></div>
+    </div>
+  </section>
 
-        <article class="release-card">
-          <div class="release-art" aria-label="Album art placeholder"></div>
-          <div class="release-meta">
-            <h3 class="release-title">Magma Veins</h3>
-            <span class="release-year">2020</span>
-          </div>
-          <div class="release-links">
-            <a href="#" class="release-link">Spotify</a>
-            <a href="#" class="release-link">Bandcamp</a>
-            <a href="#" class="release-link">Apple Music</a>
-          </div>
-        </article>
+  <section id="about" class="section about">
+    <div class="section-inner">
+      <h2 class="section-heading">About</h2>
+      <div class="about-grid">
+        <div class="about-text section-reveal">
+          <p class="about-bio" id="about-bio"></p>
+        </div>
+        <div class="about-image-wrap section-reveal">
+          <div class="about-image-placeholder" aria-label="Band photo placeholder"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -99,73 +1274,8 @@
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="show-date"><time datetime="2026-06-14">Jun 14, 2026</time></td>
-              <td class="show-venue">The Foundry</td>
-              <td class="show-city">Philadelphia, PA</td>
-              <td><a href="#" class="ticket-link">Tickets →</a></td>
-            </tr>
-            <tr>
-              <td class="show-date"><time datetime="2026-06-21">Jun 21, 2026</time></td>
-              <td class="show-venue">Blast Furnace Club</td>
-              <td class="show-city">Pittsburgh, PA</td>
-              <td><a href="#" class="ticket-link">Tickets →</a></td>
-            </tr>
-            <tr>
-              <td class="show-date"><time datetime="2026-07-04">Jul 04, 2026</time></td>
-              <td class="show-venue">The Slag Yard</td>
-              <td class="show-city">Detroit, MI</td>
-              <td><a href="#" class="ticket-link">Tickets →</a></td>
-            </tr>
-            <tr>
-              <td class="show-date"><time datetime="2026-07-19">Jul 19, 2026</time></td>
-              <td class="show-venue">Iron District</td>
-              <td class="show-city">Chicago, IL</td>
-              <td><a href="#" class="ticket-link">Tickets →</a></td>
-            </tr>
-            <tr>
-              <td class="show-date"><time datetime="2026-08-02">Aug 02, 2026</time></td>
-              <td class="show-venue">Void Amphitheatre</td>
-              <td class="show-city">Brooklyn, NY</td>
-              <td><a href="#" class="ticket-link">Tickets →</a></td>
-            </tr>
-          </tbody>
+          <tbody id="shows-tbody"></tbody>
         </table>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section about">
-    <div class="section-inner">
-      <h2 class="section-heading">About</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="about-bio">
-            git.band is a four-piece industrial metal project forged in the machine rooms of the American rust belt. Drawing from the sounds of hydraulic press lines, arc welding, and blast furnace cycles, the band translates the raw violence of industrial labor into structured noise. No samples. No triggers. Pure signal chain brutality.
-          </p>
-          <ul class="member-list">
-            <li class="member-item">
-              <span class="member-name">Karev</span>
-              <span class="member-role">// Vocals & Electronics</span>
-            </li>
-            <li class="member-item">
-              <span class="member-name">Solt</span>
-              <span class="member-role">// Guitar & Noise</span>
-            </li>
-            <li class="member-item">
-              <span class="member-name">Wen</span>
-              <span class="member-role">// Bass & Synthesis</span>
-            </li>
-            <li class="member-item">
-              <span class="member-name">Drave</span>
-              <span class="member-role">// Drums & Percussion</span>
-            </li>
-          </ul>
-        </div>
-        <div class="about-image-wrap">
-          <div class="about-image-placeholder" aria-label="Band photo placeholder"></div>
-        </div>
       </div>
     </div>
   </section>
@@ -174,26 +1284,443 @@
 
 <footer id="contact" class="site-footer">
   <div class="footer-inner">
-    <div class="footer-socials">
-      <a href="#" class="social-link" aria-label="Spotify">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.5c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7 2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7zm4-7c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3z"/></svg>
-      </a>
-      <a href="#" class="social-link" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.335.012 7.053.07 2.695.272.273 2.69.07 7.052.012 8.333 0 8.756 0 12s.012 3.667.07 4.948c.202 4.358 2.623 6.78 6.985 6.982 1.282.058 1.703.07 4.949.07 3.247 0 3.668-.012 4.949-.07 4.355-.202 6.78-2.628 6.981-6.982.058-1.281.07-1.702.07-4.948s-.012-3.667-.07-4.949C23.728 2.694 21.303.275 16.948.073 15.668.012 15.247 0 12 0z"/><circle fill="currentColor" cx="12" cy="12" r="3.6"/><circle fill="currentColor" cx="18.406" cy="5.594" r="0.6"/></svg>
-      </a>
-      <a href="#" class="social-link" aria-label="YouTube">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-      <a href="#" class="social-link" aria-label="Bandcamp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.665 6.602H0v10.796h9.665V6.602zm4.67 0v10.796h9.665V6.602h-9.665z"/></svg>
-      </a>
-    </div>
+    <div class="footer-socials" id="footer-socials"></div>
     <p class="footer-copy">
-      &copy; <span id="footer-year">2026</span> git.band. All rights reserved.
+      &copy; <span id="footer-year"></span> git.band. All rights reserved. &nbsp; <button class="cookie-link" aria-label="Cookie preferences">Cookies</button>
     </p>
   </div>
 </footer>
 
-<script src="main.js"></script>
+<div class="cursor" aria-hidden="true"></div>
+
+<svg aria-hidden="true" style="display:none">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feBlend in="SourceGraphic" mode="multiply"/>
+  </filter>
+</svg>
+
+<div class="cookie-modal" id="cookie-modal" role="dialog" aria-labelledby="cookie-title" aria-modal="true">
+  <div class="cookie-modal__content">
+    <h2 id="cookie-title" class="cookie-modal__title">Cookie Preferences</h2>
+    <p class="cookie-modal__text">
+      We use cookies to enhance your experience. Some are essential for the site to function, while others help us analyze traffic and improve performance.
+    </p>
+
+    <fieldset class="cookie-modal__fieldset">
+      <legend class="cookie-modal__legend">Cookie Categories</legend>
+
+      <label class="cookie-modal__option">
+        <input type="checkbox" name="essential" checked disabled>
+        <span class="cookie-modal__label-text">
+          <strong>Essential</strong>
+          <span class="cookie-modal__description">Required for core functionality</span>
+        </span>
+      </label>
+
+      <label class="cookie-modal__option">
+        <input type="checkbox" name="analytics" checked>
+        <span class="cookie-modal__label-text">
+          <strong>Analytics</strong>
+          <span class="cookie-modal__description">Help us understand how you use the site</span>
+        </span>
+      </label>
+
+      <label class="cookie-modal__option">
+        <input type="checkbox" name="marketing">
+        <span class="cookie-modal__label-text">
+          <strong>Marketing</strong>
+          <span class="cookie-modal__description">Track activity for personalized content</span>
+        </span>
+      </label>
+    </fieldset>
+
+    <div class="cookie-modal__actions">
+      <button class="cookie-modal__btn cookie-modal__btn--reject" id="cookie-reject">Reject All</button>
+      <button class="cookie-modal__btn cookie-modal__btn--primary" id="cookie-save">Save Preferences</button>
+      <button class="cookie-modal__btn cookie-modal__btn--accept" id="cookie-accept">Accept All</button>
+    </div>
+
+    <button class="cookie-modal__close" aria-label="Close" id="cookie-close">
+      <span>×</span>
+    </button>
+  </div>
+  <div class="cookie-modal__backdrop" id="cookie-backdrop"></div>
+</div>
+
+<script>
+'use strict';
+
+// ─── SVG icons for social links ───────────────────────────────────────────────
+const SOCIAL_ICONS = {
+  spotify:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5.5 17.5c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7 2.7 1.2 2.7 2.7-1.2 2.7-2.7 2.7zm4-7c-1.8 0-3.3-1.5-3.3-3.3s1.5-3.3 3.3-3.3 3.3 1.5 3.3 3.3-1.5 3.3-3.3 3.3z"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.335.012 7.053.07 2.695.272.273 2.69.07 7.052.012 8.333 0 8.756 0 12s.012 3.667.07 4.948c.202 4.358 2.623 6.78 6.985 6.982 1.282.058 1.703.07 4.949.07 3.247 0 3.668-.012 4.949-.07 4.355-.202 6.78-2.628 6.981-6.982.058-1.281.07-1.702.07-4.948s-.012-3.667-.07-4.949C23.728 2.694 21.303.275 16.948.073 15.668.012 15.247 0 12 0z"/><circle fill="currentColor" cx="12" cy="12" r="3.6"/><circle fill="currentColor" cx="18.406" cy="5.594" r="0.6"/></svg>',
+  youtube:   '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+  bandcamp:  '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9.665 6.602H0v10.796h9.665V6.602zm4.67 0v10.796h9.665V6.602h-9.665z"/></svg>',
+};
+
+// ─── Populate page from content.json ─────────────────────────────────────────
+let currentAudio = null;
+let currentPlaylist = [];
+let currentPlaylistIndex = 0;
+
+function setupReleaseCardListeners() {
+  document.querySelectorAll('.release-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('.track-btn') && !e.target.closest('.play-overlay') && !e.target.closest('a')) {
+        card.classList.toggle('is-flipped');
+      }
+    });
+  });
+
+  document.querySelectorAll('.play-overlay').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const releaseIdx = btn.getAttribute('data-release-idx');
+      const card = document.querySelector(`.release-card[data-release-idx="${releaseIdx}"]`);
+      const tracks = Array.from(card.querySelectorAll('.track-item'));
+
+      if (tracks.length > 0) {
+        currentPlaylist = tracks.map(t => t.querySelector('.play-track').getAttribute('data-audio-src'));
+        currentPlaylistIndex = 0;
+        playNextTrack();
+      }
+    });
+  });
+
+  document.querySelectorAll('.play-track').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const trackItem = btn.closest('.track-item');
+      const releaseIdx = trackItem.getAttribute('data-release-idx');
+      const trackIdx = parseInt(trackItem.getAttribute('data-track-idx'), 10);
+      const card = document.querySelector(`.release-card[data-release-idx="${releaseIdx}"]`);
+      const tracks = Array.from(card.querySelectorAll('.track-item'));
+
+      currentPlaylist = tracks.map(t => t.querySelector('.play-track').getAttribute('data-audio-src'));
+      currentPlaylistIndex = trackIdx;
+      playNextTrack();
+    });
+  });
+}
+
+function playNextTrack() {
+  if (currentPlaylistIndex >= currentPlaylist.length) {
+    currentPlaylistIndex = 0;
+    return;
+  }
+
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+
+  const audioSrc = currentPlaylist[currentPlaylistIndex];
+  currentAudio = new Audio(audioSrc);
+
+  currentAudio.addEventListener('ended', () => {
+    currentPlaylistIndex++;
+    playNextTrack();
+  });
+
+  currentAudio.play().catch(err => console.warn('Playback failed:', err));
+}
+
+function applyContent(c) {
+  const b = c.band;
+
+  // Nav logo + hero title
+  const logo = document.getElementById('nav-logo');
+  const title = document.getElementById('hero-title');
+  if (logo) logo.textContent = b.name;
+  if (title) {
+    // Render "GIT.BAND" as "GIT<span class=accent>.</span>BAND"
+    const parts = b.name.split('.');
+    title.innerHTML = parts.length === 2
+      ? `${parts[0]}<span class="accent">.</span>${parts[1]}`
+      : b.name;
+    title.setAttribute('data-text', b.name);
+  }
+
+  // Hero text
+  const eyebrow = document.getElementById('hero-eyebrow');
+  const tagline = document.getElementById('hero-tagline');
+  const cta     = document.getElementById('hero-cta');
+  if (eyebrow) eyebrow.textContent = b.eyebrow;
+  if (tagline) tagline.textContent = b.tagline;
+  if (cta)     cta.textContent     = b.cta;
+
+  // About bio (supports plain text or HTML)
+  const bio = document.getElementById('about-bio');
+  if (bio) bio.innerHTML = b.bio;
+
+  // Members
+  const memberList = document.getElementById('member-list');
+  if (memberList) {
+    memberList.innerHTML = b.members.map(m => `
+      <div class="member-card section-reveal">
+        <div class="member-image" ${m.image ? `style="background-image: url('${m.image}')"` : ''}></div>
+        <div>
+          <div class="member-name">${m.name}</div>
+          <div class="member-role">// ${m.role}</div>
+        </div>
+        ${(m.email || m.homepage) ? `
+          <div class="member-links">
+            ${m.email    ? `<a href="mailto:${m.email}" class="member-link">${m.email}</a>` : ''}
+            ${m.homepage ? `<a href="${m.homepage}" class="member-link" target="_blank" rel="noopener">${m.homepage}</a>` : ''}
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+  }
+
+  // Releases
+  const grid = document.getElementById('release-grid');
+  if (grid) {
+    grid.innerHTML = c.releases.map((r, releaseIdx) => {
+      const tracksHTML = r.tracks.map(t => `
+        <div class="track-item" data-track-id="${t.id}" data-release-idx="${releaseIdx}" data-track-idx="${t.trackNumber - 1}">
+          <div class="track-cover" style="background-image: url('${r.cover}')"></div>
+          <div class="track-info">
+            <div class="track-title">${t.title}</div>
+            <div class="track-duration">${t.duration}</div>
+          </div>
+          <div class="track-controls">
+            <button class="track-btn play-track" data-audio-src="${t.audioSrc}" title="Play">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <a href="${t.downloadSrc}" download class="track-btn" title="Download">
+              <svg viewBox="0 0 24 24"><path d="M7 10h10l-5 7z"/></svg>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <article class="release-card section-reveal" data-release-idx="${releaseIdx}">
+          <div class="release-card-inner">
+            <!-- Front: Cover -->
+            <div class="release-card-front">
+              <div class="release-art" style="background-image: url('${r.cover}')"></div>
+              <button class="play-overlay" data-release-idx="${releaseIdx}" title="Play all tracks">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <!-- Back: Tracks -->
+            <div class="release-card-back">
+              <div class="release-header">
+                <h3 class="release-title">${r.title}</h3>
+                <span class="release-year">${r.year}</span>
+              </div>
+              <div class="tracks-list">
+                ${tracksHTML}
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+
+    // Setup event listeners for flip cards
+    setupReleaseCardListeners();
+  }
+
+  // Shows
+  const tbody = document.getElementById('shows-tbody');
+  if (tbody) {
+    tbody.innerHTML = c.shows.map(s => `
+      <tr class="section-reveal">
+        <td class="show-date"><time datetime="${s.date}">${s.display}</time></td>
+        <td class="show-venue">${s.venue}</td>
+        <td class="show-city">${s.city}</td>
+        <td><a href="${s.tickets}" class="ticket-link">Tickets →</a></td>
+      </tr>`).join('');
+  }
+
+  // Social links
+  const socials = document.getElementById('footer-socials');
+  if (socials) {
+    socials.innerHTML = Object.entries(c.social).map(([platform, url]) => `
+      <a href="${url}" class="social-link" aria-label="${platform}">
+        ${SOCIAL_ICONS[platform] || ''}
+      </a>`).join('');
+  }
+}
+
+// ─── Boot ─────────────────────────────────────────────────────────────────────
+fetch('content.json')
+  .then(r => r.json())
+  .then(applyContent)
+  .catch(() => console.warn('content.json not found — run: npx serve .'));
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ─── Custom cursor ────────────────────────────────────────────────────
+  const cursor = document.querySelector('.cursor');
+  if (cursor) {
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = (e.clientX - 6) + 'px';
+      cursor.style.top  = (e.clientY - 6) + 'px';
+    });
+
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+    });
+  }
+
+  // ─── Hamburger menu toggle ────────────────────────────────────────────
+  const burger = document.querySelector('.nav-burger');
+  const navLinks = document.querySelector('.nav-links');
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      const isOpen = burger.getAttribute('aria-expanded') === 'true';
+      burger.setAttribute('aria-expanded', String(!isOpen));
+      navLinks.classList.toggle('is-open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burger.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('is-open');
+      });
+    });
+  }
+
+  // ─── Hero slideshow ───────────────────────────────────────────────────
+  const slides = Array.from(document.querySelectorAll('.hero-slide'));
+  let currentIndex = 0;
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[currentIndex].classList.remove('is-active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      void slides[currentIndex].offsetWidth;
+      slides[currentIndex].classList.add('is-active');
+    }, 7000);
+  }
+
+  // ─── Active nav link via IntersectionObserver ─────────────────────────
+  const sections = Array.from(
+    document.querySelectorAll('#hero, #music, #fools, #about, #shows, #contact')
+  );
+  const navLinkItems = Array.from(document.querySelectorAll('.nav-link'));
+
+  const setActiveLink = (id) => {
+    navLinkItems.forEach(link => {
+      if (link.getAttribute('href') === `#${id}`) {
+        link.classList.add('is-active');
+      } else {
+        link.classList.remove('is-active');
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActiveLink(entry.target.id);
+    });
+  }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // ─── Nav background opacity on scroll ──────────────────────────────────
+  const siteNav = document.getElementById('site-nav');
+  const heroSection = document.getElementById('hero');
+
+  const updateNavStyle = () => {
+    const threshold = heroSection ? heroSection.offsetHeight * 0.5 : 300;
+    siteNav.classList.toggle('is-scrolled', window.scrollY > threshold);
+  };
+
+  window.addEventListener('scroll', updateNavStyle, { passive: true });
+  updateNavStyle();
+
+  // ─── Section heading glitch data-text ────────────────────────────────
+  document.querySelectorAll('.section-heading').forEach(el => {
+    el.setAttribute('data-text', el.textContent);
+  });
+
+  // ─── Footer year ──────────────────────────────────────────────────────
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // ─── Cookie preferences ───────────────────────────────────────────────
+  const COOKIE_PREFS_KEY    = 'git-band-cookie-prefs';
+  const COOKIE_CONSENT_KEY  = 'git-band-cookie-consent';
+
+  const cookieModal   = document.getElementById('cookie-modal');
+  const cookieBackdrop = document.getElementById('cookie-backdrop');
+  const cookieClose   = document.getElementById('cookie-close');
+  const cookieAccept  = document.getElementById('cookie-accept');
+  const cookieReject  = document.getElementById('cookie-reject');
+  const cookieSave    = document.getElementById('cookie-save');
+  const cookieLink    = document.querySelector('.cookie-link');
+
+  const getStoredPreferences = () => {
+    const stored = localStorage.getItem(COOKIE_PREFS_KEY);
+    return stored ? JSON.parse(stored) : null;
+  };
+
+  const openCookieModal  = () => { cookieModal.classList.add('is-open');    document.body.style.overflow = 'hidden'; };
+  const closeCookieModal = () => { cookieModal.classList.remove('is-open'); document.body.style.overflow = ''; };
+
+  const applyConsentSettings = (prefs) => {
+    if (prefs.analytics) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(['consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': prefs.marketing ? 'granted' : 'denied'
+      }]);
+    }
+  };
+
+  const saveCookiePreferences = (prefs) => {
+    localStorage.setItem(COOKIE_PREFS_KEY, JSON.stringify(prefs));
+    localStorage.setItem(COOKIE_CONSENT_KEY, 'true');
+    applyConsentSettings(prefs);
+    closeCookieModal();
+  };
+
+  const getCheckboxState = () => ({
+    essential: true,
+    analytics: document.querySelector('input[name="analytics"]').checked,
+    marketing: document.querySelector('input[name="marketing"]').checked
+  });
+
+  const setCheckboxState = (prefs) => {
+    if (prefs) {
+      document.querySelector('input[name="analytics"]').checked = prefs.analytics !== false;
+      document.querySelector('input[name="marketing"]').checked = prefs.marketing === true;
+    }
+  };
+
+  const storedPrefs = getStoredPreferences();
+  if (!storedPrefs) {
+    openCookieModal();
+  } else {
+    setCheckboxState(storedPrefs);
+    applyConsentSettings(storedPrefs);
+  }
+
+  cookieAccept  && cookieAccept.addEventListener('click',  () => saveCookiePreferences({ essential: true, analytics: true, marketing: true }));
+  cookieReject  && cookieReject.addEventListener('click',  () => saveCookiePreferences({ essential: true, analytics: false, marketing: false }));
+  cookieSave    && cookieSave.addEventListener('click',    () => saveCookiePreferences(getCheckboxState()));
+  cookieClose   && cookieClose.addEventListener('click',   closeCookieModal);
+  cookieBackdrop && cookieBackdrop.addEventListener('click', closeCookieModal);
+
+  cookieLink && cookieLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    setCheckboxState(getStoredPreferences());
+    openCookieModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cookieModal.classList.contains('is-open')) closeCookieModal();
+  });
+
+});
+</script>
 </body>
 </html>

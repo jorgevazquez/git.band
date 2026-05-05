@@ -1,0 +1,132 @@
+{
+  "band": {
+    "name": "GIT",
+    "eyebrow": "// REALLY HARD AND HOT ROCK",
+    "tagline": "An American Band",
+    "cta": "Hear the Machine",
+    "bio":"<p>GIT is a two-piece project forged in the machine rooms of the American Wild West — which is a remarkable origin story, given that machine rooms have never once existed in the American Wild West. Geography has never stopped this band from doing anything.</p><p>Gil plays guitars. Mister Forged plays everything else. Both of them write the songs. Whether this constitutes a creative partnership or an elaborate Mexican standoff set to music remains one of the great unanswered questions of our time.</p><p>The sound is what happens when Linkin Park, Tool, 70s progressive rock, and EDM all show up to the same party, realize there isn't enough room, and decide to occupy the same body simultaneously. It is heavy and cerebral and danceable and completely structurally unsound in the best possible way — the musical equivalent of a building that shouldn't be standing but refuses, on principle, to fall down.</p><p>GIT is not currently touring. They have nothing coming out soon. They are not available for your festival, your brand partnership, or your sincere attempt to categorize them. What they do have is music that sounds like it was assembled by two people who know exactly what they're doing and have chosen, deliberately, to do something else entirely.</p><p>The machine room is everywhere. GIT found it first.</p>",
+    "members": [
+      { "name": "Mister Forged", "role": "Everything Gil does not do.", "image": "/images/members/mister-forged.jpg", "email": "", "homepage": "" },
+      { "name": "Gil",  "role": "Guitar & Noise", "image": "/images/members/gil.jpg", "email": "", "homepage": "" }
+    ]
+  },
+  "releases": [
+    {
+      "title":    "An American Band",
+      "year":     "2016",
+      "soundcloud": "#",
+      "cover": "/audio/an_american_band/an_american_band.png",
+      "tracks": [
+        {
+          "id": "gitanamericanbandunreleased-01",
+          "trackNumber": 1,
+          "title": "Sacred Geometry",
+          "duration": "5:12",
+          "durationSeconds": 312,
+          "audioSrc": "/audio/an_american_band/01-sacred_geometry.mp3",
+          "downloadSrc": "/audio/an_american_band/01-sacred_geometry.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-02",
+          "trackNumber": 2,
+          "title": "369",
+          "duration": "2:38",
+          "durationSeconds": 158,
+          "audioSrc": "/audio/an_american_band/02-369.mp3",
+          "downloadSrc": "/audio/an_american_band/02-369.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-03",
+          "trackNumber": 3,
+          "title": "Panic",
+          "duration": "5:49",
+          "durationSeconds": 349,
+          "audioSrc": "/audio/an_american_band/03-panic.mp3",
+          "downloadSrc": "/audio/an_american_band/03-panic.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-04",
+          "trackNumber": 4,
+          "title": "A Single Line",
+          "duration": "3:51",
+          "durationSeconds": 231,
+          "audioSrc": "/audio/an_american_band/04-a_single_line.mp3",
+          "downloadSrc": "/audio/an_american_band/04-a_single_line.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-05",
+          "trackNumber": 5,
+          "title": "Biting The Apple",
+          "duration": "4:06",
+          "durationSeconds": 246,
+          "audioSrc": "/audio/an_american_band/05-biting_the_apple.mp3",
+          "downloadSrc": "/audio/an_american_band/05-biting_the_apple.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-06",
+          "trackNumber": 6,
+          "title": "Machine (Part I) *unfinished*",
+          "duration": "4:18",
+          "durationSeconds": 258,
+          "audioSrc": "/audio/an_american_band/06-machine.mp3",
+          "downloadSrc": "/audio/an_american_band/06-machine.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-07",
+          "trackNumber": 7,
+          "title": "Machine (Part II) *Unfinished*",
+          "duration": "5:34",
+          "durationSeconds": 334,
+          "audioSrc": "/audio/an_american_band/07-machine_part_ii.mp3",
+          "downloadSrc": "/audio/an_american_band/07-machine_part_ii.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-08",
+          "trackNumber": 8,
+          "title": "Schizo ( Part I ) *unfinished*",
+          "duration": "4:26",
+          "durationSeconds": 266,
+          "audioSrc": "/audio/an_american_band/08-schizo.mp3",
+          "downloadSrc": "/audio/an_american_band/08-schizo.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-09",
+          "trackNumber": 9,
+          "title": "Schizo ( Part II ) *unifinished*",
+          "duration": "6:57",
+          "durationSeconds": 417,
+          "audioSrc": "/audio/an_american_band/09-schizo_part_ii.mp3",
+          "downloadSrc": "/audio/an_american_band/09-schizo_part_ii.mp3",
+          "downloadLabel": "MP3"
+        },
+        {
+          "id": "gitanamericanbandunreleased-10",
+          "trackNumber": 10,
+          "title": "Sacred Geometry ( Part II )",
+          "duration": "7:44",
+          "durationSeconds": 466,
+          "audioSrc": "/audio/an_american_band/10-sacred_geometry_part_ii.mp3",
+          "downloadSrc": "/audio/an_american_band/10-sacred_geometry_part_ii.mp3",
+          "downloadLabel": "MP3"
+        }
+      ]
+    }
+  ], 
+  "shows": [
+    { "date": "2027-01-01", "display": "Jan 1, 2027", "venue": "TBD","city": "Los Angeles, CA", "tickets": "#" }
+  ],
+  "social": {
+    "spotify":   "#",
+    "instagram": "#",
+    "youtube":   "#",
+    "soundcloud":  "#"
+  }
+}
