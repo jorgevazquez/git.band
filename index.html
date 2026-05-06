@@ -105,7 +105,7 @@
     /* Typography scale */
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(5rem, 16vw, 14rem);
+      font-size: clamp(10rem, 32vw, 28rem);
       line-height: 0.9;
       letter-spacing: -0.01em;
       text-shadow:
@@ -522,6 +522,11 @@
       transform: rotateY(180deg);
     }
 
+    .release-card.is-flipped .play-overlay {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
     .release-card-front,
     .release-card-back {
       position: absolute;
@@ -548,11 +553,27 @@
 
     .release-art {
       width: 100%;
-      height: 100%;
+      flex: 1;
+      min-height: 0;
       background-color: var(--color-soot);
       background-size: cover;
       background-position: center;
       position: relative;
+    }
+
+    .release-front-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 3vw, 2rem);
+      letter-spacing: 0.02em;
+      color: var(--color-ash-white);
+      display: flex;
+      align-items: center;
+      min-height: calc(var(--space-xs) * 2 + 30px + 2rem);
+      padding: 0 var(--space-sm);
+      background: var(--color-forge-black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .release-art::after {
@@ -1255,7 +1276,10 @@
           <p class="about-bio" id="about-bio"></p>
         </div>
         <div class="about-image-wrap section-reveal">
-          <div class="about-image-placeholder" aria-label="Band photo placeholder"></div>
+          <video class="about-image-placeholder" autoplay muted loop aria-label="Band video">
+            <source src="video/git.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
     </div>
@@ -1458,9 +1482,15 @@ function applyContent(c) {
   // Members
   const memberList = document.getElementById('member-list');
   if (memberList) {
-    memberList.innerHTML = b.members.map(m => `
+    memberList.innerHTML = b.members.map(m => {
+      const videoMap = { 'mister forged': 'video/forged.mp4', 'gil': 'video/gil.mp4' };
+      const videoSrc = videoMap[m.name.toLowerCase()];
+      const imageElement = videoSrc
+        ? `<video class="member-image" autoplay muted loop><source src="${videoSrc}" type="video/mp4"></video>`
+        : `<div class="member-image" ${m.image ? `style="background-image: url('${m.image}')"` : ''}></div>`;
+      return `
       <div class="member-card section-reveal">
-        <div class="member-image" ${m.image ? `style="background-image: url('${m.image}')"` : ''}></div>
+        ${imageElement}
         <div>
           <div class="member-name">${m.name}</div>
           <div class="member-role">// ${m.role}</div>
@@ -1472,7 +1502,8 @@ function applyContent(c) {
           </div>
         ` : ''}
       </div>
-    `).join('');
+    `;
+  }).join('');
   }
 
   // Releases
@@ -1506,6 +1537,7 @@ function applyContent(c) {
               <button class="play-overlay" data-release-idx="${releaseIdx}" title="Play all tracks">
                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </button>
+              <div class="release-front-title">${r.title}</div>
             </div>
             <!-- Back: Tracks -->
             <div class="release-card-back">

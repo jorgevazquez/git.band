@@ -35,7 +35,10 @@ const EXCLUDE_PATTERNS = [
   /\.output$/,
   /^dist\//,
   /^scripts\//,
-  /^audio\//,
+  /^video\//,
+  /^DEPLOY(\.md)?$/i,
+  /^README(\.md)?$/i,
+  /\.DS_Store$/,
 ];
 
 const CACHE_CONTROL_RULES: { [key: string]: string } = {
@@ -47,6 +50,7 @@ const CACHE_CONTROL_RULES: { [key: string]: string } = {
   ".jpg": "public,max-age=31536000",
   ".png": "public,max-age=31536000",
   ".mp3": "public,max-age=31536000",
+  ".mp4": "public,max-age=31536000",
   ".woff2": "public,max-age=31536000",
 };
 
@@ -198,8 +202,14 @@ async function createInvalidation(cf: CloudFrontClient): Promise<void> {
       await uploadFile(s3, file);
     }
 
-    // Delete removed files
-    const filesToDelete = Array.from(s3Keys).filter((key) => !localKeys.has(key));
+    // Delete removed files (but preserve excluded folders)
+    const PRESERVE_PATTERNS = [/^audio\//, /^video\//];
+    const filesToDelete = Array.from(s3Keys).filter((key) => {
+      if (!localKeys.has(key)) {
+        return !PRESERVE_PATTERNS.some((pattern) => pattern.test(key));
+      }
+      return false;
+    });
     if (filesToDelete.length > 0) {
       console.log(`\n🗑️  Deleting ${filesToDelete.length} removed files...`);
       for (const key of filesToDelete) {
